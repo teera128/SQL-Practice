@@ -1,0 +1,23 @@
+Thinking Process ของแต่ละด่าน 
+1. SELECT * FROM inhabitant เพื่อดูข้อมูลชาวบ้าน
+2. SELECT * FROM inhabitant WHERE state = 'friendly' เพื่อดูชาวบ้านที่มีสถานะ friendly
+3. SELECT * FROM inhabitant WHERE state = 'friendly' AND job = 'weaponsmith' เพื่อดูชาวบ้านที่มีสถานะ friendly และเป็นช่างทำอาวุธ
+4. SELECT * FROM inhabitant WHERE state = 'friendly' AND job LIKE '%smith' เนื่องจากทำอาวุธมีคนเดียว จึงต้องหาช่างอื่น ๆ ด้วย ที่มีคำว่า smith ในอาชีพ
+5. SELECT personid FROM inhabitant WHERE name = 'Stranger' หา person id ของคนนี้ ซึ่งถูก insert ชื่อว่า Stranger
+6. SELECT gold FROM inhabitant WHERE name = 'Stranger' เพื่อดูจำนวน gold ที่มี
+7. SELECT * FROM item WHERE owner ISNULL เพื่อดู item ที่ไม่มีเจ้าของ
+8. UPDATE item SET owner = 20 WHERE owner ISNULL เพื่อเก็บ item ที่ไม่มีเจ้าของทั้งหมด
+9. SELECT * FROM item WHERE owner = 20 เพื่อดู item ที่มีตอนนี้ทั้งหมด
+10. SELECT * FROM inhabitant WHERE state = 'friendly' AND job = 'dealer' OR job = 'merchant'
+11. UPDATE item SET owner = 15 WHERE item IN ('ring', 'teapot') เพื่อ มอบ item ring และ teapot ให้กับ person id 15 
+12. UPDATE inhabitant SET name = 'Benz' WHERE name = 'Stranger' เพื่อเปลี่ยนชื่อเป็น Benz
+13. SELECT * FROM inhabitant WHERE job = 'baker' ORDER BY gold DESC เพื่อหาคนที่เป็น baker และเรียงลำดับหาคนที่มี gold มากที่สุด
+14. SELECT * FROM inhabitant WHERE job = 'pilot' เพื่อหาชาวบ้านที่เป็นนักบิน
+15. SELECT inhabitant.name FROM village, inhabitant ON village.villageid = inhabitant.villageid WHERE village.name = 'Onionville' AND village.chief = inhabitant.personid เพื่อหาชื่อคนที่เป็นหัวหน้าหมูบ้านของ Onionville เริ่มจาก ดูที่ villageid หลังจากนั้น หา name หมูบ้าน เป็น Onionville และ chief ต้องมีค่าเท่า personid
+16. SELECT COUNT(*) FROM inhabitant, village WHERE village.villageid = inhabitant.villageid AND village.name = 'Onionville' AND inhabitant.gender = 'f' เพื่อหาจำนวนคนที่เป็นผู้หญิงในหมู่บ้าน Onionville
+17. SELECT inhabitant.name FROM inhabitant, village WHERE village.villageid = inhabitant.villageid AND village.name = 'Onionville' AND inhabitant.gender = 'f' เพื่อชื่อคนที่เป็นผู้หญิงในหมู่บ้าน Onionville
+18. SELECT SUM(gold) FROM inhabitant WHERE job = 'baker' OR job = 'dealer' OR job = 'merchant' หาจำนวน gold ทั้งหมดของคนที่มีอาชีพ baker, dealer และ merchant
+19. SELECT state, AVG(gold) FROM inhabitant GROUP BY state เพื่อหาจำนวนเฉลี่ยของ gold ในแต่ละ state โดย เรียงลำดับตาม state
+20. DELETE FROM inhabitant WHERE name = 'Dirty Diane' เพื่อลบคนชื่อ Dirty Diane ออก
+21. UPDATE inhabitant SET state = 'friendly' WHERE job = 'pilot' เพื่อเปลี่ยนสถานะของ pilot จาก kidnapped เป็น friendly
+22. UPDATE inhabitant SET name = 'Teerapat Pongpetra' WHERE personid = 20 เพื่อเปลี่ยนชื่อเป็นชื่อนามสกุลจริง เพื่อปรากฏใน Certificate
